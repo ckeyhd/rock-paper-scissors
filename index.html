@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+  <h1>Reto Piedra, Papel o Tijera</h1>
+  <h3>Desarrollo Básico</h3>
+  <p>Este reto hace parte de las primeras 13 clases del curso básico de JavaScript y para el desarrollo se utilizó solo:</p>
+  <ul>
+    <li>Declaración y asignación de variables</li>
+    <li>Declaración y uso de Funciones</li>
+    <li>Uso de condicionales: If, Else, Else if</li>
+  </ul>
+
+  <p><strong>Nota:</strong> Para visualizar el resultado, por favor abrir la consola.</p>
+  <script>
+    let options = {
+      r:'rock',
+      p:'papper',
+      s:'scissors',
+    }
+    
+    let cpuPoint = 0;
+    let playerPoint = 0;
+    
+    let playerName = 'Camilo' //Nombre Jugador
+
+    let playerChoice = options.r //Opción elegida por el jugador
+    let cpuChoice = options.s //Opción elegida por la máquina 
+    
+    function startPlay(playerName, playerChoice, cpuChoice){
+      console.log(`Hi ${playerName}, is time to play...`)
+      console.log(`...`)
+
+      if(!playerChoice || !cpuChoice){
+        console.log(`Please choose an option first!!!!`)
+        return
+      }
+
+      if(cpuChoice==='rock' && playerChoice ==='rock'){
+        playerTie(playerName)
+      }else if (cpuChoice === 'rock' && playerChoice === 'papper'){
+        playerWin(playerName)
+      } else if (cpuChoice === 'rock' && playerChoice === 'scissors') {
+        playerLoose(playerName)
+      } else if (cpuChoice === 'papper' && playerChoice === 'papper') {
+        playerTie(playerName)
+      } else if (cpuChoice === 'papper' && playerChoice === 'scissors') {
+        playerWin(playerName)
+      } else if (cpuChoice === 'papper' && playerChoice === 'rock') {
+        playerLoose(playerName)
+      } else if (cpuChoice === 'scissors' && playerChoice === 'scissors') {
+        playerTie(playerName)
+      } else if (cpuChoice === 'scissors' && playerChoice === 'papper') {
+        playerLoose(playerName)
+      } else if (cpuChoice === 'scissors' && playerChoice === 'rock') {
+        playerWin(playerName)
+      }
+
+      console.log(`...`)
+
+    }
+
+    function playerWin(playerName){
+        console.log(`Congratulation ${playerName}, You Wiiiiin!!!`)
+        calculatePoints(0, 1)
+    }
+    
+    function playerTie(playerName){
+        console.log(`Oohh there is a tie ${playerName}, try again!!!`)
+        calculatePoints(0, 0)
+    }
+
+    function playerLoose(playerName){
+      console.log(`Ha ha ha... You lose ${playerName}!!!`)
+      calculatePoints(1, 0)
+    }
+
+    function calculatePoints(cpu,player){
+      if(cpu >= 1){
+        cpuPoint++
+      }else if(player >= 1){
+        playerPoint++
+      }
+      console.log(`Total CPU: ${cpuPoint} | Total Player [${playerName}]: ${playerPoint}`)
+    }
+
+    //Iniciar juego
+    startPlay(playerName, playerChoice, cpuChoice)
+
+  </script>
+</body>
+</html>
